@@ -1,0 +1,30 @@
+# === Mac System Files ===
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# === Python / Compiled Caches ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.log
+.pytest_cache/
+.mypy_cache/
+
+# === Project Telemetry & Simulated Runtime States ===
+.telemetry_sim.json
+checkpoints/
+
+# === Virtual Environments & Dependencies ===
+.venv/
+venv/
+ENV/
+env/
+
+# === Environment Variables & Private Keys ===
+.env
+.env.*
+!.env.example
