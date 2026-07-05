@@ -1,5 +1,3 @@
-# quid-pro-quota
-Autonomous Multi-Agent Resource Mesh Network &amp; API Resiliency Engine built with Google ADK 2.0.
 # QuidPro Quota
 
 > A multi-agent resiliency framework built with the Google Agent Development Kit (ADK) that keeps AI applications running when API rate limits are reached through intelligent key rotation, automated recovery, and secure local fallback execution.
