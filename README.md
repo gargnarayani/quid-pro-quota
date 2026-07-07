@@ -163,7 +163,7 @@ cd project-quidpro-quota
 uv sync
 ```
 
-**### Step 2: Initialize the Local QuidPro Quota Daemon**
+### Step 2: Initialize the Local QuidPro Quota Daemon
 Launch the background FastAPI controller web server and the native ADK 2.0 execution graph runner. This node manages local telemetry and hosts your loopback fallback gateway interface:
 
 ```bash
@@ -173,12 +173,12 @@ uv run uvicorn app:app --host 127.0.0.1 --port 8000 --reload
 
 Once initialized, open your browser and navigate to http://127.0.0.1:8080 to access the interactive FastAPI Control Room Dashboard to monitor physical telemetry and logging traces in real time.
 
-**### Step 3: Inject the Local Fallback Configuration into Antigravity**
+### Step 3: Inject the Local Fallback Configuration into Antigravity
 Open or create your global Antigravity CLI configuration file located at ~/.gemini/antigravity-cli/settings.json. Update or paste the parameters below exactly as written to point upstream failures directly to your local daemon loopback interface.
 
 (Note: To prevent the markdown parser from flattening lines in your editor, this snippet is wrapped inside a formatting-safe HTML block)
 
-**### Step 4: Launch the Antigravity TUI**
+### Step 4: Launch the Antigravity TUI
 Initialize your active terminal workspace workspace exactly as you normally would. The local proxy will now silently intercept downstream exceptions:
 
 ```bash
