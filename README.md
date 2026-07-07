@@ -136,15 +136,51 @@ quid-pro-quota/
 
 ---
 
-## Running the Project
+## 🛠️ System Prerequisites & Host Dependencies
 
-Start the application locally:
+Before initializing the local orchestration daemon, ensure your workstation satisfies the following software and system environment configurations:
+
+* **Python Runtime:** Python 3.11 or higher (managed via `uv` for lightning-fast environment provisioning).
+* **Package Manager:** `uv` (Astral's ultra-fast dependency manager).
+* **Operating System Isolation:** Linux / macOS (supporting kernel-level resource constraints and local sandboxing wrappers via POSIX processes).
+* **Terminal Interface:** The official Antigravity CLI toolkit installed (`agy`).
+
+---
+
+## 🚀 Local Deployment & Installation Steps
+
+Follow these exact steps to clone, configure, and initialize the system environment on your local workstation.
+
+### Step 1: Clone the Core Codebase and Setup the Virtual Sandbox
+Leverage `uv` to pull down dependencies and initialize an isolated virtual workspace environment natively without polluting global system paths:
 
 ```bash
-python3 app.py
-```
+# Clone the repository structure
+git clone [https://github.com/your-username/project-quidpro-quota.git](https://github.com/your-username/project-quidpro-quota.git)
+cd project-quidpro-quota
 
-The application launches a local dashboard where workflow activity, agent execution, and recovery events can be monitored in real time.
+# Sync and install localized locked dependencies via uv
+uv sync
+
+**### Step 2: Initialize the Local QuidPro Quota Daemon**
+Launch the background FastAPI controller web server and the native ADK 2.0 execution graph runner. This node manages local telemetry and hosts your loopback fallback gateway interface:
+
+```bash
+# Spin up the orchestration daemon bound locally to port 8000
+uv run uvicorn app:app --host 127.0.0.1 --port 8000 --reload
+
+Once initialized, open your browser and navigate to http://127.0.0.1:8080 to access the interactive FastAPI Control Room Dashboard to monitor physical telemetry and logging traces in real time.
+
+**### Step 3: Inject the Local Fallback Configuration into Antigravity**
+Open or create your global Antigravity CLI configuration file located at ~/.gemini/antigravity-cli/settings.json. Update or paste the parameters below exactly as written to point upstream failures directly to your local daemon loopback interface.
+
+(Note: To prevent the markdown parser from flattening lines in your editor, this snippet is wrapped inside a formatting-safe HTML block)
+
+**### Step 4: Launch the Antigravity TUI**
+Initialize your active terminal workspace workspace exactly as you normally would. The local proxy will now silently intercept downstream exceptions:
+
+```bash
+agy
 
 ---
 
