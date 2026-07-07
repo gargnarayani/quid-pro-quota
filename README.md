@@ -161,6 +161,7 @@ cd project-quidpro-quota
 
 # Sync and install localized locked dependencies via uv
 uv sync
+'''
 
 **### Step 2: Initialize the Local QuidPro Quota Daemon**
 Launch the background FastAPI controller web server and the native ADK 2.0 execution graph runner. This node manages local telemetry and hosts your loopback fallback gateway interface:
@@ -168,6 +169,7 @@ Launch the background FastAPI controller web server and the native ADK 2.0 execu
 ```bash
 # Spin up the orchestration daemon bound locally to port 8000
 uv run uvicorn app:app --host 127.0.0.1 --port 8000 --reload
+'''
 
 Once initialized, open your browser and navigate to http://127.0.0.1:8080 to access the interactive FastAPI Control Room Dashboard to monitor physical telemetry and logging traces in real time.
 
@@ -181,6 +183,7 @@ Initialize your active terminal workspace workspace exactly as you normally woul
 
 ```bash
 agy
+'''
 
 ---
 
