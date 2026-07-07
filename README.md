@@ -147,7 +147,7 @@ Before initializing the local orchestration daemon, ensure your workstation sati
 
 ---
 
-## 🚀 Local Deployment & Installation Steps
+## Local Deployment & Installation Steps
 
 Follow these exact steps to clone, configure, and initialize the system environment on your local workstation.
 
@@ -198,6 +198,77 @@ Example scenarios include:
 - Recovery after network failures
 - Sandbox isolation
 - Workflow checkpoint verification
+
+The FastAPI Control Room Dashboard features a Chaos Engineering hub enabling manual fault injection to evaluate architecture resiliency under extreme constraints. Alternatively, engineers can verify these exact execution branches through the terminal using the core built-in system testing arguments detailed below.
+
+### Scenario 1: Key Rotation & Vault Backoff
+Simulate an upstream API throttling condition to verify circuit-breaker mechanics:
+
+```bash
+uv run app:app --key_rotation
+```
+Expected Output: The interceptor captures a mock HTTP 429 status code, locks the active credential in a 300-second time-locked blacklist directory, increments the internal pool pointer, and fulfills the request via gemini_key_alt1 with zero runtime disruption.
+
+### Scenario 2: Complete Cloud Token Exhaustion
+Force an absolute upstream provider blackout to trigger a localized sandbox migration:
+
+```bash
+uv run app:app --force_link_outage
+```
+Expected Output: The Supervisor agent intercepts a P2P_LINK_OUTAGE tool exception. The in-memory chat history is cleanly serialized, the local container switches on (constrained at 2GB RAM / 10% CPU maximum boundaries), and the Token Barter Clearinghouse tracks processing duration, appending an HMAC-SHA256 signed ledger snapshot to disk showing a local token expenditure charge (e.g., 300 System Tokens for a 3-second run).
+
+### Scenario 3: Cybersecurity Adversarial Prompt-Injection
+Inject a malicious payload attack vector directly into the local fallback queue to test data data containment:
+
+```bash
+uv run app:app --malicious_payload
+```
+Expected Output: The local Probabilistic Agent Judge scans the incoming stream and flags an active security violation pattern. The dashboard flashes an urgent red security alert, instantly overrides the execution DAG path to quarantine state mode, freezes the running hardware sandbox container workspace, and severs all simulated network paths to prevent exfiltration.
+
+---
+## Verification
+To verify that the multi-agent graph, rotation timeouts, and fallback limits behave exactly as specified under chaotic conditions, the codebase contains a native Behavior-Driven Development (BDD) test registry written in Gherkin syntax inside tests/quota_resiliency.feature. Run the automated test suite with the following terminal command:
+
+```bash
+# Execute the BDD resiliency test framework
+uv run pytest tests/
+```
+# Feature Specification: Multi-Agent API Quota Resiliency & Fallback Boundaries
+
+```gherkin
+Feature: Multi-Agent API Quota Resiliency and Fallback Sandbox Boundaries
+
+  Scenario: Primary API Key experiences an absolute rate limit throttling event
+    Given the multi-agent orchestrator graph is initialized
+    And the key vault contains valid provider credentials
+    When an upstream provider request encounters an HTTP 429 status code
+    Then the crypto router agent should lock the failing key in a 300-second blacklist
+    And the provider index should increment to load the secondary backup key
+    And the system should complete the client payload transaction with zero downtime
+
+  Scenario: Complete Cloud Wallet exhaustion triggers localized fallback containment
+    Given all public cloud api keys are locked inside the temporal circuit breaker vault
+    When a new client data payload enters the system processing gateway
+    Then the supervisor agent should catch a P2P_LINK_OUTAGE exception
+    And the execution graph should shift the job route to the offline local sandbox queue
+    And the exchange auditor tool should enforce a 100-token-per-second barter policy
+    And the ledger state must be saved using an HMAC-SHA256 cryptographically signed checkpoint
+
+  Scenario: Local sandbox catches an adversarial prompt-injection attack vector
+    Given the application is running in local fallback containment mode
+    When an incoming client string contains a malicious payload exploit template
+    Then the probabilistic agent judge should identify the security threat pattern
+    And the system should trigger an immediate quarantine state change
+    And the supervisor must freeze the local sandbox container and terminate network lines
+```
+
+---
+
+## Security, Compliance, & Secret Management Guidelines
+This framework is built for zero-trust local infrastructure execution. Adhere strictly to the security rules below:
+- **Strict Mandatory Warning on Credentials:** Under no circumstances should provider API keys, server tokens, or private secrets be hardcoded inside app.py, agent.py, or any tracked codebase file.
+- **Environmental Sourcing:** Pass production API credentials exclusively via runtime environment flags or retrieve them out of encrypted local parameters managed through the localized configuration file layer (settings.json).
+- **Cryptographic Ledger Integrity**: The local token ledger employs a secure HMAC-SHA256 verification pattern. If any metrics or tracking state snapshots on disk are manually altered, the system will flag a signature collision, discard the file, and place the workspace into lock-down mode to guarantee local accounting audit compliance.
 
 ---
 
